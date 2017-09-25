@@ -1,0 +1,48 @@
+<nav class="navbar navbar-default">
+  <div *ngIf="loginPage">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <p class="navbar-brand" href="#"><strong>Web Notepad</strong></p>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="activeTab=='signUp'"><a routerLink="/login" href="#"><strong> Sign in</strong></a>
+        </li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="activeTab=='signIn'" ><a routerLink="/signUp" href="#"><strong> Sign up</strong></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div *ngIf="loginPage===undefined">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <p class="navbar-brand" href="#"><strong>Web Notepad</strong></p>
+      </div>
+
+      <ul class="nav navbar-nav">
+        <li  *ngIf="activeTab=='home'" class="active"><a routerLink="/home" href="#">Home page</a></li>
+        <li  *ngIf="activeTab!='home'" ><a routerLink="/home" href="#">Home page</a></li>
+
+        <li  *ngIf="activeTab=='addNote'" class="active"><a routerLink="/addNote" href="#">Add note</a></li>
+        <li  *ngIf="activeTab!='addNote'"><a routerLink="/addNote" href="#">Add note</a></li>
+
+        <li  *ngIf="activeTab=='editNote'" class="active"><a href="#">Edit note</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="activeTab=='editAccount'" class="active"><a routerLink="/editAccount" href="#"><strong> {{login}}</strong></a>
+        </li>
+        <li *ngIf="activeTab!='editAccount'" ><a routerLink="/editAccount" href="#"><strong> {{login}}</strong></a>
+        </li>
+        <li><a (click)="signOut()" href="#"><span class="glyphicon glyphicon glyphicon-off"></span><strong> Sign out</strong></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+</nav>

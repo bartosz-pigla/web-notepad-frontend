@@ -1,0 +1,115 @@
+<app-header  [loginPage]="true" activeTab="signUp"></app-header>
+<div class="top-content">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2 text">
+        <h1><strong>Web Notepad</strong> Sign up</h1>
+        <!--<div class="description">-->
+        <!--<p>-->
+        <!--This is a free responsive login form made with Bootstrap. -->
+        <!--Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!-->
+        <!--</p>-->
+        <!--</div>-->
+      </div>
+    </div>
+    <div class="row form-box">
+      <div class="col-sm-6 col-sm-offset-3 ">
+        <div class="form-top">
+          <div class="form-top-left">
+            <h3>Sign up to our site</h3>
+            <p>Enter your new account details to sign up:</p>
+          </div>
+          <div class="form-top-right">
+            <i class="fa fa-key"></i>
+          </div>
+        </div>
+        <div class="form-bottom">
+
+          <div *ngIf="signedUp==false" class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Warning!</strong> Failed to sign up. Username already in use.
+          </div>
+
+          <form class="login-form" [formGroup]="signUpForm" (ngSubmit)="signUp()">
+            <div *ngIf="signUpForm.get('login').hasError('maxlength') && signUpForm.get('login').touched" class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                                                                                                                          aria-label="close">&times;</a>
+              <strong>Warning!</strong> Field username must not be longer than 30 signs
+            </div>
+            <div *ngIf="signUpForm.get('login').hasError('required') && signUpForm.get('login').touched" class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                                                                                                                         aria-label="close">&times;</a>
+              <strong>Warning!</strong> Field username is required
+            </div>
+            <div class="form-group">
+              <label for="form-username">Username</label>
+              <input type="text" name="form-username" placeholder="Username..." class="form-username form-control"
+                     id="form-username" formControlName="login">
+
+            </div>
+
+            <div formGroupName="passwords">
+
+              <div *ngIf="signUpForm.get('passwords').get('password').hasError('maxlength') && signUpForm.get('passwords').get('password').touched" class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                                   aria-label="close">&times;</a>
+                <strong>Warning!</strong> Field password must not be longer than 50 signs
+              </div>
+              <div *ngIf="signUpForm.get('passwords').get('password').hasError('required') && signUpForm.get('passwords').get('password').touched" class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                                   aria-label="close">&times;</a>
+                <strong>Warning!</strong> Field password is required
+              </div>
+
+              <div class="form-group">
+                <label for="form-password">Password</label>
+                <input type="password" name="form-password" placeholder="Password..." class="form-password form-control"
+                       id="form-password" formControlName="password">
+              </div>
+
+              <div *ngIf="signUpForm.get('passwords').get('reenterPassword').hasError('maxlength') && signUpForm.get('passwords').get('reenterPassword').touched" class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                                   aria-label="close">&times;</a>
+                <strong>Warning!</strong> Field re-enter password must not be longer than 50 signs
+              </div>
+              <div *ngIf="signUpForm.get('passwords').get('reenterPassword').hasError('required') && signUpForm.get('passwords').get('reenterPassword').touched" class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                                   aria-label="close">&times;</a>
+                <strong>Warning!</strong> Field re-enter password is required
+              </div>
+              <div *ngIf="signUpForm.get('passwords').touched && signUpForm.get('passwords').hasError('nomatch')" class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                                                                                                                                  aria-label="close">&times;</a>
+                <strong>Warning!</strong> Both passwords must match
+              </div>
+              <div class="form-group">
+                <label  for="form-re-enter-password">Re-enter password</label>
+                <input type="password" name="form-re-enter-password" placeholder="Re-enter password..."
+                       class="form-password form-control" id="form-re-enter-password" formControlName="reenterPassword">
+              </div>
+            </div>
+            <div *ngIf="signUpForm.get('firstName').hasError('maxlength') && signUpForm.get('firstName').touched" class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                                 aria-label="close">&times;</a>
+              <strong>Warning!</strong> Field first name must not be longer than 50 signs
+            </div>
+            <div class="form-group">
+              <label  for="form-first-name">First name</label>
+              <input type="text" name="form-first-name" placeholder="First name..." class="form-username form-control"
+                     id="form-first-name" formControlName="firstName">
+            </div>
+
+            <div *ngIf="signUpForm.get('lastName').hasError('maxlength') && signUpForm.get('lastName').touched" class="alert alert-danger alert-dismissable"><a href="#" class="close" data-dismiss="alert"
+                                                                 aria-label="close">&times;</a>
+              <strong>Warning!</strong> Field last name must not be longer than 70 signs
+            </div>
+            <div class="form-group">
+              <label for="form-last-name">Last name</label>
+              <input type="text" name="form-last-name" placeholder="Last name..." class="form-username form-control"
+                     id="form-last-name" formControlName="lastName">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn" [disabled]="signUpForm.invalid">Sign up!</button>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

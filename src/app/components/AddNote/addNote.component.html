@@ -1,0 +1,68 @@
+<app-header activeTab="addNote"></app-header>
+<div class="top-content">
+
+  <div class="container">
+    <!--<div class="row">-->
+    <!--<div class="col-sm-8 col-sm-offset-2 text">-->
+    <!--<h1><strong>Web Notepad</strong> Sign in</h1>-->
+    <!--&lt;!&ndash;<div class="description">&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>&ndash;&gt;-->
+    <!--&lt;!&ndash;This is a free responsive login form made with Bootstrap. &ndash;&gt;-->
+    <!--&lt;!&ndash;Download it on <a href="http://azmind.com"><strong>AZMIND</strong></a>, customize and use it as you like!&ndash;&gt;-->
+    <!--&lt;!&ndash;</p>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="row form-box">
+      <div class="col-sm-10 col-sm-offset-1 ">
+        <div class="form-top">
+          <h3 align="center"><strong>Add note</strong></h3>
+
+          <div *ngIf="added==true" class="alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Success!</strong> You have successfully added new note
+          </div>
+
+          <div *ngIf="added==false" class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+            <strong>Warning!</strong> Failed to add new note
+          </div>
+
+          <form class="login-form" [formGroup]="addNoteForm" (ngSubmit)="addNote()">
+
+            <div *ngIf="addNoteForm.get('title').touched && addNoteForm.get('title').hasError('maxlength')" class="alert alert-danger alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Warning!</strong> Field title must not be longer than 30 signs
+            </div>
+            <div *ngIf="addNoteForm.get('title').touched && addNoteForm.get('title').hasError('required')" class="alert alert-danger alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Warning!</strong> Field title is required
+            </div>
+
+            <div class="form-group">
+              <label for="form-title">Title</label>
+              <input type="text" name="form-title" placeholder="Title..." class="form-username form-control" id="form-title" formControlName="title">
+            </div>
+
+            <div *ngIf="addNoteForm.get('description').touched && addNoteForm.get('description').hasError('maxlength')" class="alert alert-danger alert-dismissable">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Warning!</strong> Field description must not be longer than 255 signs
+            </div>
+
+            <div class="form-group">
+              <label for="form-description">Description</label>
+              <textarea class="form-control" rows="5" placeholder="Description..." id="form-description" formControlName="description"></textarea>
+            </div>
+
+            <div class="form-group">
+              <button type="button" routerLink="/home" class="btn" >Back</button>
+              <button type="submit" class="btn btn-success" [disabled]="addNoteForm.invalid">Add note</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

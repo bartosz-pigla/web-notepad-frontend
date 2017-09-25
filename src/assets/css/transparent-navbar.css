@@ -1,0 +1,12 @@
+.navbar-default{
+    background:transparent;
+    background-image:none;
+    border-color:transparent;
+    box-shadow:none;
+}
+/*.navbar.navbar-inverse.navbar-fixed-top li > a:hover {*/
+    /*color: cyan;*/
+/*}*/
+.navbar li:hover {
+    background-color: #777777;
+}
